@@ -1,15 +1,53 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.ranmewo.scriptslauncher</id>
-    <name>scripts-launcher</name>
-    <vendor>ran-mewo</vendor>
+    <name>Scripts Launcher</name>
+    <vendor>Ran Mewo</vendor>
+    <description><![CDATA[
+        A powerful IntelliJ IDEA plugin that allows you to configure and run custom scripts directly from the IDE.<br>
+        Easily manage global scripts, execute custom commands, and streamline your development workflow with <br>
+        an intuitive interface accessible through the tool window and settings panel.<br>
+        <br>
+        Features:<br>
+        • Configure and manage global scripts (shared across all projects)<br>
+        • Run startup scripts automatically<br>
+        • Execute scripts on demand through the tool window<br>
+        • Customizable script configurations<br>
+        • Easy-to-use settings interface
+    ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.ranmewo.scriptslauncher.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+        <toolWindow factoryClass="com.github.ranmewo.scriptslauncher.toolWindow.MyToolWindowFactory" 
+                    id="Scripts Launcher" 
+                    anchor="right" 
+                    icon="AllIcons.Actions.Execute"
+                    canCloseContents="true"
+                    secondary="false"
+                    doNotActivateOnStart="true"/>
         <postStartupActivity implementation="com.github.ranmewo.scriptslauncher.startup.MyProjectActivity" />
+        <applicationConfigurable 
+            parentId="other" 
+            instance="com.github.ranmewo.scriptslauncher.settings.ScriptLauncherConfigurable" 
+            id="ScriptLauncherConfigurable" 
+            displayName="Scripts Launcher"/>
     </extensions>
+    
+    <actions>
+        <action id="ScriptLauncher.AddScript" 
+                class="com.github.ranmewo.scriptslauncher.actions.AddScriptAction" 
+                text="Add Script" 
+                description="Add a new script configuration">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        <action id="ScriptLauncher.RunStartupScripts" 
+                class="com.github.ranmewo.scriptslauncher.actions.RunStartupScriptsAction" 
+                text="Run Startup Scripts" 
+                description="Execute all enabled startup scripts">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
 </idea-plugin>

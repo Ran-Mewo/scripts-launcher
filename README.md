@@ -17,11 +17,16 @@
 - [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
 
 <!-- Plugin description -->
-This Fancy IntelliJ Platform Plugin is going to be your implementation of the brilliant ideas that you have.
+A powerful IntelliJ IDEA plugin that allows you to configure and run custom scripts directly from the IDE.
+Easily manage global scripts, execute custom commands, and streamline your development workflow with 
+an intuitive interface accessible through the tool window and settings panel.
 
-This specific section is a source for the [plugin.xml](/src/main/resources/META-INF/plugin.xml) file which will be extracted by the [Gradle](/build.gradle.kts) during the build process.
-
-To keep everything working, do not remove `<!-- ... -->` sections. 
+Features:
+• Configure and manage global scripts (shared across all projects)
+• Run startup scripts automatically  
+• Execute scripts on demand through the tool window
+• Customizable script configurations
+• Easy-to-use settings interface
 <!-- Plugin description end -->
 
 ## Installation
